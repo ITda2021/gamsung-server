@@ -26,6 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//[get] get posts
 app.get("/api/posts", (req, res)=>{
   const sqlSelect = "SELECT * FROM notice_posts;";
   db.query(sqlSelect, (err, result)=>{
@@ -33,6 +34,16 @@ app.get("/api/posts", (req, res)=>{
   })
 })
 
+//[get] get post with id
+app.get("/api/posts/:seq", (req, res)=>{
+  const postSeq = req.params.seq;
+  const sqlSelect = "SELECT * FROM notice_posts WHERE seq=?;";
+  db.query(sqlSelect, postSeq, (err, result)=>{
+      res.send(result[0]);
+  })
+})
+
+//[post] create post
 app.post('/api/posts', (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
