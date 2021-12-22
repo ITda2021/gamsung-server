@@ -5,15 +5,14 @@ const bodyParser = require('body-parser');
 const PORT = process.env.port || 8080;
 const cors = require('cors');
 
-const whitelist = ["https://www.gamsungsoft.com","http://localhost:3000"];
+const whitelist = [
+  "https://www.gamsungsoft.com", 
+  "https://test.gamsungsoft.com",
+  "http://localhost:3000"] ;
+  
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not Allowed Origin!"));
-    }
-  },
+  credentials: true, 
+  origin: "http://localhost:3000",
 };
 
 const db = mysql.createPool({
