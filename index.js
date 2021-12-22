@@ -27,7 +27,7 @@ app.post('/api/posts', (req, res) => {
   const title = req.body.title;
   const content = req.body.content;
   const category = req.body.category;
-  const sqlInsert = "INSERT INTO notice_posts (title, content, category) VALUES (?, ?, ?)";
+  const sqlInsert = "INSERT INTO notice_posts (title, content, category, created_at, modified_at ) VALUES (?, ?, ?, NOW(), NOW())";
   
   db.query(
     sqlInsert, 
