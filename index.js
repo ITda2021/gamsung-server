@@ -6,7 +6,7 @@ const PORT = process.env.port || 8080;
 const cors = require('cors');
 
 const db = mysql.createPool({
-  host: '18.218.30.137',
+  host: '3.130.190.15',
   user: 'user',
   password: 'rkatjdTHVMXM@0607',
   database: 'gamsung'
