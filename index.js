@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const PORT = process.env.port || 3001;
+const PORT = process.env.port || 8080;
 const cors = require('cors');
 
 const db = mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
+  host: '18.218.30.137',
+  user: 'user',
+  password: 'rkatjdTHVMXM@0607',
   database: 'gamsung'
 });
 
