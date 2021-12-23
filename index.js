@@ -12,7 +12,7 @@ const whitelist = [
   
 const corsOptions = {
   credentials: true, 
-  //origin: "http://localhost:3000",
+  origin: "http://localhost:3000",
 };
 
 const db = mysql.createPool({
@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//[get] get posts with query category
+//[get] get posts and also can get posts with query category
 app.get("/api/posts", (req, res)=>{
   const category = req.query.category;
   const sqlSelect = category ?
