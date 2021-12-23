@@ -12,7 +12,7 @@ const whitelist = [
   
 const corsOptions = {
   credentials: true, 
-  origin: "http://localhost:3000",
+  //origin: "http://localhost:3000",
 };
 
 const db = mysql.createPool({
@@ -29,7 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //[get] get posts with query category
 app.get("/api/posts", (req, res)=>{
   const category = req.query.category;
-  const sqlSelect = "SELECT * FROM notice_posts WHERE category=?;";
+  const sqlSelect = category ?
+   "SELECT * FROM notice_posts WHERE category=?;":
+   "SELECT * FROM notice_posts";
   db.query(sqlSelect, category, (err, result)=>{
       res.send(result);
   })
