@@ -64,10 +64,9 @@ app.post('/api/posts', (req, res) => {
 //[delete] delete post with param seq
 app.delete("/api/posts/:seq", (req, res)=>{
   const postSeq = req.params.seq;
-  const sqlSelect = "DELETE * FROM notice_posts WHERE seq=?;";
+  const sqlSelect = "DELETE FROM notice_posts WHERE seq=?;";
   db.query(sqlSelect, postSeq, (err, result)=>{
       res.send(`delete post seq: ${postSeq}`);
-      res.send(result[0]);
   })
 })
 
