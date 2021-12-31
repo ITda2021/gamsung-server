@@ -54,7 +54,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //[post] upload image
-app.post('/img', upload.single('img'), (req, res) => {
+app.post('/api/img', upload.single('img'), (req, res) => {
   try {
     console.log('전달받은 파일', req.file);
     res.json({ url: req.file.location });
