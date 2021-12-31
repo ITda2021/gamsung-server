@@ -12,21 +12,9 @@ const app = express();
 const s3 = new aws.S3();
 const PORT = process.env.port || 8080;
 
-const whitelist = [
-  "https://www.gamsungsoft.com", 
-  "https://test.gamsungsoft.com",
-  "http://3.130.190.15",
-  "http://localhost:3000"] ;
-
 const corsOptions = {
   credentials: true, 
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not Allowed Origin!"));
-    }
-  },
+  origin: "http://www.gamsungsoft.com"
 };
 
 const db = mysql.createPool({
